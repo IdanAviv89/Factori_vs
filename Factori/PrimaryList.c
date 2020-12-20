@@ -81,8 +81,14 @@ primary_list* calculate_primary_numbers(int num) {
     }
     list->num = num;
     list->last_index = -1;
-    list->counter_array = (int*)malloc(array_size * sizeof(int));
-    list->primary_array = (int*)malloc(array_size * sizeof(int));
+    
+    if ((list->counter_array = (int*)malloc(array_size * sizeof(int))) == NULL) {
+        return NULL;
+    }
+
+    if ((list->primary_array = (int*)malloc(array_size * sizeof(int))) == NULL) {
+        return NULL;
+    }
 
     if ((temp = primary_counter(&num, 2)) != 0) {
         (list->last_index)++;
@@ -95,8 +101,12 @@ primary_list* calculate_primary_numbers(int num) {
             (list->last_index)++;
             if (list->last_index >= array_size) {
                 array_size += NUM_PRIMARY_NUMBERS;
-                list->counter_array = (int*)realloc(list->counter_array, array_size * sizeof(int));
-                list->primary_array = (int*)realloc(list->primary_array, array_size * sizeof(int));
+                if((list->counter_array = (int*)realloc(list->counter_array, array_size * sizeof(int))) == NULL) {
+                    return NULL;
+                }
+                if ((list->primary_array = (int*)realloc(list->primary_array, array_size * sizeof(int))) == NULL) {
+                return NULL;
+                }
             }
 
             (list->counter_array)[list->last_index] = temp;
@@ -108,8 +118,12 @@ primary_list* calculate_primary_numbers(int num) {
         (list->last_index)++;
         if (list->last_index >= array_size) {
             array_size += 1;
-            list->counter_array = (int*)realloc(list->counter_array, array_size * sizeof(int));
-            list->primary_array = (int*)realloc(list->primary_array, array_size * sizeof(int));
+            if ((list->counter_array = (int*)realloc(list->counter_array, array_size * sizeof(int))) == NULL) {
+                return NULL;
+            }
+            if ((list->primary_array = (int*)realloc(list->primary_array, array_size * sizeof(int))) == NULL) {
+                return NULL;
+            }
         }
         (list->counter_array)[list->last_index] = 1;
         (list->primary_array)[list->last_index] = num;
@@ -144,17 +158,3 @@ primary_list* DestroyPrimaryList(primary_list* list) {
 }
 
 
-/*
-void print_string(int num, primary_list *data){
-    printf("The prime factors of %d are: ",num);
-    for (int i = 0; i <= data->last_index; ++i) {
-        for (int j = 0; j < data->counter_array[i]; ++j) {
-            if(i == data->last_index && j == data->counter_array[i]-1){
-                printf("%d", data->primary_array[i]);
-                continue;
-            }
-            printf("%d, ", data->primary_array[i]);
-        }
-    }
-    printf("\r\n");
-}*/

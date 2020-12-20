@@ -69,18 +69,18 @@ char Close_all_handles(HANDLE *array,int len){
 
 /// release all memory from the main threads, return TRUE if successful else FALSE
 char release_memory(Thread *shared_parameters,HANDLE *finish_priority_semaphores,HANDLE *thread_handles, int number_of_threads){
-    /*
+    
     char exist_code = SUCCEED;
-
+    
     exist_code |= Close_all_handles(finish_priority_semaphores,number_of_threads+2);
     exist_code |= Close_all_handles(thread_handles,number_of_threads);
-
+    
 
     DestroyLock(&shared_parameters->queue_lock);
     DestroyLock(&shared_parameters->file_lock);
     DestroyQueue(&shared_parameters->queue);
-
-    return exist_code;*/
+    
+    return exist_code;
 }
 
 int main(int argc, char *argv[]) {
@@ -121,6 +121,10 @@ int main(int argc, char *argv[]) {
     int lines_per_thread = number_of_tasks / number_of_threads;
     int extra_line_thread = number_of_tasks % number_of_threads;
 
+    if (lines_per_thread == 0) {
+        number_of_threads = extra_line_thread;
+    }
+
     int thread_start_line = 0;
     ///
 
@@ -159,9 +163,12 @@ int main(int argc, char *argv[]) {
         local_parameters->queue = queue;
         local_parameters->mission_file = NULL;
         local_parameters->priority_file = NULL;
+        local_parameters->local_queue = NULL;
+        local_parameters->data = NULL;
         local_parameters->priority_start_line = thread_start_line;
         local_parameters->priority_end_line = thread_start_line+(lines_per_thread-1);
         local_parameters->thread_id  = i;
+
         if(extra_line_thread > 0){
             extra_line_thread -= 1;
             local_parameters->priority_end_line += 1;

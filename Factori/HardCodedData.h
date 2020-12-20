@@ -10,7 +10,7 @@
 #define QUEUE_BLOCK_SIZE 32
 #define SUCCEED 0
 #define FAIL -1
-#define waiting_max_time INFINITE
+#define waiting_max_time 120000
 #define STRING_BLOCK_SIZE 50 // should be more than 37
 #define NUM_BUFFER 20
 #define NUM_PRIMARY_NUMBERS 10

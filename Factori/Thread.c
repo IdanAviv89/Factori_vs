@@ -5,22 +5,17 @@
 #include "Thread.h"
 
 char release_thread_memory(Thread *thread){
- /*   char exist_code = SUCCEED;
+    char exist_code = SUCCEED;
+    
 
-    //exist_code |= release_semaphore(thread->thread_finish_priorities);
+    if (thread->priority_file != INVALID_HANDLE_VALUE) {
+        exist_code |= (CloseHandle(thread->priority_file) == 0) ? FAIL : SUCCEED;
+    }
 
-    exist_code |= !CloseHandle(thread->priority_file);
-    exist_code |= !CloseHandle(thread->mission_file);
-
-    //DestroyQueue(&(thread->local_queue));
-    //DestroyPrimaryList(thread->data);
-
-    //exist_code |= release_semaphore(thread->thread_finished);
+    DestroyQueue(&(thread->local_queue));
+    DestroyPrimaryList(thread->data);
 
     return exist_code;
-
-    */
-    return SUCCEED;
 }
 
 
@@ -284,6 +279,6 @@ DWORD WINAPI thread_main(LPVOID lpParam){
         }
     }
 
-    //release_thread_memory(thread) |
-    return SUCCEED;
+    
+    return release_thread_memory(thread) | SUCCEED;
 }
