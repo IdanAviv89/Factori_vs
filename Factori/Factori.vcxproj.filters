@@ -15,43 +15,43 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\..\..\Documents\EX3\PrimaryList.c">
+    <ClCompile Include="PrimaryList.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Documents\EX3\Queue.c">
+    <ClCompile Include="Queue.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Documents\EX3\Thread.c">
+    <ClCompile Include="Thread.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Documents\EX3\HelperFunctions.c">
+    <ClCompile Include="HelperFunctions.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Documents\EX3\Lock.c">
+    <ClCompile Include="Lock.c">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\Documents\EX3\main.c">
+    <ClCompile Include="main.c">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\..\..\Documents\EX3\PrimaryList.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Thread.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Documents\EX3\Queue.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Queue.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Documents\EX3\Thread.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="PrimaryList.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Documents\EX3\HardCodedData.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="Lock.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Documents\EX3\HelperFunctions.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="HelperFunctions.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\Documents\EX3\Lock.h">
-      <Filter>Source Files</Filter>
+    <ClInclude Include="HardCodedData.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

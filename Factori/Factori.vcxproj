@@ -18,6 +18,22 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="HelperFunctions.c" />
+    <ClCompile Include="Lock.c" />
+    <ClCompile Include="main.c" />
+    <ClCompile Include="PrimaryList.c" />
+    <ClCompile Include="Queue.c" />
+    <ClCompile Include="Thread.c" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="HardCodedData.h" />
+    <ClInclude Include="HelperFunctions.h" />
+    <ClInclude Include="Lock.h" />
+    <ClInclude Include="PrimaryList.h" />
+    <ClInclude Include="Queue.h" />
+    <ClInclude Include="Thread.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,22 +154,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClCompile Include="..\..\..\..\Documents\EX3\HelperFunctions.c" />
-    <ClCompile Include="..\..\..\..\Documents\EX3\Lock.c" />
-    <ClCompile Include="..\..\..\..\Documents\EX3\main.c" />
-    <ClCompile Include="..\..\..\..\Documents\EX3\PrimaryList.c" />
-    <ClCompile Include="..\..\..\..\Documents\EX3\Queue.c" />
-    <ClCompile Include="..\..\..\..\Documents\EX3\Thread.c" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\..\..\Documents\EX3\HardCodedData.h" />
-    <ClInclude Include="..\..\..\..\Documents\EX3\HelperFunctions.h" />
-    <ClInclude Include="..\..\..\..\Documents\EX3\Lock.h" />
-    <ClInclude Include="..\..\..\..\Documents\EX3\PrimaryList.h" />
-    <ClInclude Include="..\..\..\..\Documents\EX3\Queue.h" />
-    <ClInclude Include="..\..\..\..\Documents\EX3\Thread.h" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
