@@ -19,7 +19,7 @@ typedef struct primary_list_struct{
 }primary_list;
 
 
-primary_list* calculate_primary_numbers(int num);
+primary_list* calculate_primary_numbers(primary_list* list);
 primary_list* DestroyPrimaryList(primary_list *list);
 
 

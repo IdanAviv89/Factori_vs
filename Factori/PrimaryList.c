@@ -74,16 +74,26 @@ char formatted_string(primary_list *list){
 }
 
 
-primary_list* calculate_primary_numbers(int num){
+primary_list* calculate_primary_numbers(primary_list *list){
+
+    if (list->primary_array != NULL) {
+       // free(list->primary_array);
+    }
+
+    if (list->counter_array != NULL) {
+       // free(list->counter_array);
+    }
+
+    
+
+    
 
     int array_size = NUM_PRIMARY_NUMBERS;
     int temp;
-    primary_list *list;
+    int num = list->num;
 
-    if (( list = (primary_list*) malloc(sizeof(primary_list))) == NULL){
-        return NULL;
-    }
-    list->num = num;
+  
+    
     list->last_index = -1;
     list->counter_array = (int *) malloc(array_size*sizeof(int));
     list->primary_array = (int *) malloc(array_size*sizeof(int));
@@ -120,7 +130,7 @@ primary_list* calculate_primary_numbers(int num){
     }
 
     if (formatted_string(list) == FAIL){
-        return DestroyPrimaryList(list);
+       // return DestroyPrimaryList(list);
     }
 
     return list;

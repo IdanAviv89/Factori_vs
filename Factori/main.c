@@ -157,6 +157,13 @@ int main(int argc, char *argv[]) {
         local_parameters-> queue_lock = queue_lock;
         local_parameters->file_lock = file_lock;
         local_parameters->queue = queue;
+        local_parameters->mission_file = NULL;
+        local_parameters->priority_file = NULL;
+
+        if ((local_parameters->data = (primary_list*) calloc(1,sizeof(primary_list))) == NULL) {
+            release_memory(&shared_parameters, finish_priority_semaphores, thread_handles, number_of_threads);
+            return FAIL;
+        }
 
         /// calculating the lines the thread should read from priority file
         local_parameters->priority_start_line = thread_start_line;

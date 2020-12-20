@@ -12,8 +12,8 @@ char release_thread_memory(Thread *thread){
     exist_code |= !CloseHandle(thread->priority_file);
     exist_code |= !CloseHandle(thread->mission_file);
 
-    DestroyQueue(&(thread->local_queue));
-    DestroyPrimaryList(thread->data);
+    //DestroyQueue(&(thread->local_queue));
+    //DestroyPrimaryList(thread->data);
 
     //exist_code |= release_semaphore(thread->thread_finished);
 
@@ -100,13 +100,16 @@ char write_to_file(Thread *thread, int num){
 
 char calculate_primary(Thread *thread,int start_byte){
 
-    thread->mission_file = CreateFileA(thread->mission_filename,   // name of the file
-                                      (GENERIC_READ | GENERIC_WRITE) ,          // open for writing
-                                      (FILE_SHARE_READ | FILE_SHARE_WRITE),        // share for reading
-                                      NULL,                   // default security
-                                      OPEN_EXISTING,          // open existing file
-                                      FILE_ATTRIBUTE_NORMAL,  // normal file
-                                      NULL);                  // no attr. template
+    if (thread->mission_file == NULL) {
+        thread->mission_file = CreateFileA(thread->mission_filename,   // name of the file
+            (GENERIC_READ | GENERIC_WRITE),          // open for writing
+            FILE_SHARE_WRITE | FILE_SHARE_READ,       // do not share
+            NULL,                   // default security
+            OPEN_EXISTING,             // create new file only
+            FILE_ATTRIBUTE_NORMAL,  // normal file
+            NULL);                  // no attr. template
+
+    }
 
     if (thread->mission_file == INVALID_HANDLE_VALUE)
     {
@@ -132,7 +135,7 @@ char calculate_primary(Thread *thread,int start_byte){
         return FAIL;
     }
 
-    while(TRUE){ // moving the pointer to the right location
+    while(TRUE){ 
         if(ReadFile(thread->mission_file,&c,1,&dwBytesRead,NULL) == 0){
             printf("ERROR: unable to read mission file (error code %d)",GetLastError());
             release_thread_memory(thread);
@@ -152,7 +155,9 @@ char calculate_primary(Thread *thread,int start_byte){
         return FAIL;
     }
 
-    if((thread->data = calculate_primary_numbers(num)) == NULL){
+    thread->data->num = num;
+
+    if( calculate_primary_numbers(thread->data) == NULL){
         printf("Error calculating the primary numbers");
         release_thread_memory(thread);
         return FAIL;
