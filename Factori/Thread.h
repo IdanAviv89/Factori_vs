@@ -1,7 +1,3 @@
-//
-// Created by idana on 19/12/2020.
-//
-
 #ifndef FACTORI_THREAD_H
 #define FACTORI_THREAD_H
 
@@ -11,16 +7,16 @@
 #include "Lock.h"
 #include "PrimaryList.h"
 
-typedef struct thread_pram{
+typedef struct thread_pram {
 
     // shared values:
-    char *mission_filename;
-    char *priority_filename;
+    char* mission_filename;
+    char* priority_filename;
 
     // global values:
-    Lock *queue_lock;
-    Lock *file_lock;
-    Queue *queue;
+    Lock* queue_lock;
+    Lock* file_lock;
+    Queue* queue;
 
     // unique values:
     int priority_start_line;
@@ -34,8 +30,8 @@ typedef struct thread_pram{
     HANDLE priority_file;
     HANDLE mission_file;
 
-    Queue *local_queue;
-    primary_list *data;
+    Queue* local_queue;
+    primary_list* data;
 
 }Thread;
 

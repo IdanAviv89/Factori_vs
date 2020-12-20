@@ -5,7 +5,7 @@
 #include "Thread.h"
 
 char release_thread_memory(Thread *thread){
-    char exist_code = SUCCEED;
+ /*   char exist_code = SUCCEED;
 
     //exist_code |= release_semaphore(thread->thread_finish_priorities);
 
@@ -19,8 +19,12 @@ char release_thread_memory(Thread *thread){
 
     return exist_code;
 
-
+    */
+    return SUCCEED;
 }
+
+
+
 
 
 char open_priority_file(Thread *thread){ // open priority file in the correct location
@@ -155,9 +159,9 @@ char calculate_primary(Thread *thread,int start_byte){
         return FAIL;
     }
 
-    thread->data->num = num;
+  
 
-    if( calculate_primary_numbers(thread->data) == NULL){
+    if ((thread->data = calculate_primary_numbers(num)) == NULL) {
         printf("Error calculating the primary numbers");
         release_thread_memory(thread);
         return FAIL;
@@ -280,6 +284,6 @@ DWORD WINAPI thread_main(LPVOID lpParam){
         }
     }
 
-
-    return release_thread_memory(thread) | SUCCEED;
+    //release_thread_memory(thread) |
+    return SUCCEED;
 }
