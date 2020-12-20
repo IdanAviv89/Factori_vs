@@ -24,9 +24,10 @@ char formatted_string(primary_list *list){
     }
 
 
-    if(sprintf(list->str,"The prime factors of %d are: ",list->num) < 0){
+    if (sprintf_s(list->str, size, "The prime factors of %d are: ", list->num) == FAIL) {
         return FAIL;
     }
+
 
     int last_index = strlen(list->str);
     size = size - (last_index+1);
@@ -44,11 +45,11 @@ char formatted_string(primary_list *list){
             }
 
             if(i == list->last_index && j == list->counter_array[i] - 1){
-                if(sprintf(list->str+last_index, "%d", list->primary_array[i]) < 0){
+                if(sprintf_s(list->str+last_index,size, "%d", list->primary_array[i]) ==  FAIL){
                     return FAIL;
                 }
             }else{
-                if(sprintf(list->str+last_index, "%d, ", list->primary_array[i]) < 0){
+                if(sprintf_s(list->str+last_index,size, "%d, ", list->primary_array[i]) == FAIL){
                     return FAIL;
                 }
             }
@@ -64,7 +65,7 @@ char formatted_string(primary_list *list){
         size += STRING_BLOCK_SIZE;
     }
 
-    if(sprintf(list->str+last_index,"\r\n") < 0){
+    if(sprintf_s(list->str+last_index,size,"\r\n") == FAIL){
         return FAIL;
     }
 
